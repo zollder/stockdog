@@ -80,4 +80,10 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+  /* Fixes bootstrap bug, when the modal background is black */
+  .modal-backdrop
+  {
+      opacity:0.5 !important;
+  }
 }
