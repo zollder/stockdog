@@ -9,12 +9,20 @@
 angular.module('stockdogApp')
 
 // [1] Register directive and inject dependencies
-.directive('stkWatchlistPanel', function($location, $modal, WatchlistService) {
+.directive('stkWatchlistPanel', function($location, $modal, $routeParams, WatchlistService) {
 	return {
 		templateUrl: 'views/templates/watchlist-panel.html',
 		restrict: 'E',	// use as element only
 		scope: {},		// isolate the scope of attached variables to the directive's context
 		link: function($scope) {
+
+			// keeps track of the current watchlist being displayed
+			$scope.currentList = $routeParams.listId;
+
+			// redirects to the desired watchlist view based on specified watchlist ID
+			$scope.gotoList = function(listId) {
+				$location.path('watchlist/' + listId);
+			};
 
 			// [2] Initialize variables
 			$scope.watchlist = {};
