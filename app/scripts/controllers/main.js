@@ -4,8 +4,9 @@
  * @ngdoc function
  * @name stockdogApp.controller:MainCtrl
  * @description
- * # MainCtrl
- * Controller of the stockdogApp
+ * # MainCtrl Controller of the stockdogApp
+ * Forces AngularJS to load the MainCtrl controller used for logic that should be applied regardless
+ * of the current evaluated route. Encapsulatea application‐wide logic into a single controller.
  */
 angular.module('stockdogApp')
 
@@ -21,12 +22,12 @@ angular.module('stockdogApp')
 	$scope.$watch(
 		// retrieves the location path
 		function() {
-			return $location.path()
+			return $location.path();
 		},
 		// callback function: updates the $scope.activeView variable using _.contains from lodash
 		// used to add and active class to the navigation bar
 		function(path) {
-			if (_.contains(path, 'watchlist')) {
+			if (_.includes(path, 'watchlist')) {
 				$scope.activeView = 'watchlist';
 			} else {
 				$scope.activeView = 'dashboard';
