@@ -8,12 +8,15 @@
  */
 angular.module('stockdogApp')
 
-// [1] Register directive and inject dependencies
+// Register directive and inject dependencies
 .directive('stkWatchlistPanel', function($location, $modal, $routeParams, WatchlistService) {
+
 	return {
+
 		templateUrl: 'views/templates/watchlist-panel.html',
 		restrict: 'E',	// use as element only
 		scope: {},		// isolate the scope of attached variables to the directive's context
+
 		link: function($scope) {
 
 			// keeps track of the current watchlist being displayed
@@ -33,22 +36,22 @@ angular.module('stockdogApp')
 				show: false
 			});
 
-			// [3] Bind model from service to this scope
+			// Bind model from service to this scope
 			$scope.watchlists = WatchlistService.query();
 
-			// [4] Display addlist modal
+			// Display addlist modal
 			$scope.showModal = function() {
 				addListModal.$promise.then(addListModal.show);
 			};
 
-			// [5] Create a new list from fields in modal
+			// Create a new list from fields in modal
 			$scope.createList = function() {
 				WatchlistService.save($scope.watchlist);
 				addListModal.hide();
 				$scope.watchlist = {};
 			};
 
-			// [6] Delete desired list and redirect to home
+			// Delete desired list and redirect to home
 			$scope.deleteList = function(list) {
 				WatchlistService.remove(list);
 				$location.path('/');

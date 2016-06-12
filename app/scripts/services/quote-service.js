@@ -10,6 +10,7 @@
 angular.module('stockdogApp')
 
 .service('QuoteService', function($http, $interval) {
+
 	var stocks = [];
 	var BASE = 'http://query.yahooapis.com/v1/public/yql';
 
@@ -28,7 +29,7 @@ angular.module('stockdogApp')
 		}
 	};
 
-	// [2] Helper functions for managing which stocks to pull quotes for
+	// Helper functions for managing which stocks to pull quotes for
 	this.register = function(stock) {
 		stocks.push(stock);
 	};
@@ -41,7 +42,7 @@ angular.module('stockdogApp')
 		stocks = [];
 	};
 
-	// [3] Main processing function for communicating with Yahoo Finance API
+	// Main processing function for communicating with Yahoo Finance API
 	this.fetch = function() {
 
 		var symbols = _.reduce(stocks,
@@ -66,6 +67,6 @@ angular.module('stockdogApp')
 		.error(function(data) { console.log(data); });
 	};
 
-	// [4] Used to fetch new quote data every 5 seconds
+	// Used to fetch new quote data every 5 seconds
 	$interval(this.fetch, 5000);
 });
