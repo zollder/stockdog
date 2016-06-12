@@ -9,9 +9,7 @@
 angular.module('stockdogApp')
 
 .directive('stkStockTable', function() {
-
 	return {
-
 		restrict: 'E',
 		templateUrl: 'views/templates/stock-table.html',
 		scope: { watchlist: '=' },	// Isolate scope to watchlist object
