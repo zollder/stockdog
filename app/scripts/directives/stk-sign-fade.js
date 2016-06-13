@@ -32,9 +32,11 @@ angular.module('stockdogApp')
 				*/
 				if (oldPrice && newPrice) {
 					var direction = newPrice - oldPrice >= 0 ? 'up' : 'down';
-					$animate.addClass($element, 'change-' + direction, function() {
-						$animate.removeClass($element, 'change-' + direction);
-					});
+					$animate.addClass($element, 'change-' + direction).then(
+						function() {
+							$animate.removeClass($element, 'change-' + direction);
+						}
+					);
 				}
 			});
 		}
