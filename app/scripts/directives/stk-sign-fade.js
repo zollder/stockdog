@@ -18,7 +18,7 @@ angular.module('stockdogApp')
 
 			// Use $observe watch for changes to the expression assigned to stkSignFade
 			$attrs.$observe('stkSignFade', function(newVal) {
-				if (oldVal && oldVal == newVal) {
+				if (oldVal && oldVal === newVal) {
 					return;
 				}
 
